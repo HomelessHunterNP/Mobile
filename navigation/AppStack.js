@@ -7,9 +7,9 @@ const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 
 // Pages
-import Live from "../Screens/Live";
-import MapScreen from "../Screens/Map";
-import Profile from "../Screens/Profile";
+import Live from "../Screens/Live/LiveScreen";
+import MapScreen from "../Screens/Map/MapScreen";
+import Profile from "../Screens/Profile/ProfileScreen";
 
 const AppStack = () => {
   return (
