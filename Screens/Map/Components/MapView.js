@@ -13,6 +13,7 @@ export default MapView = (props) => {
         style={styles.map}
         showsUserLocation
         showsCompass={false}
+        tintColor="#00d5a4"
         //Default location: London
         region={{
           latitude: currentLocation
