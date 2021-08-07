@@ -13,10 +13,16 @@ export default MapView = (props) => {
         style={styles.map}
         showsUserLocation
         showsCompass={false}
-        // Default location: London
-        initialRegion={{
-          latitude: currentLocation.latitude ? currentLocation.latitude : 51.507351,
-          longitude: currentLocation.longitude ? currentLocation.latitude : -0.127758,
+        //Default location: London
+        region={{
+          latitude: currentLocation
+            ? currentLocation.coords.latitude
+            : 51.507351,
+          longitude: currentLocation
+            ? currentLocation.coords.longitude
+            : -0.127758,
+          latitudeDelta: currentLocation ? 0.001 : 1,
+          longitudeDelta: currentLocation ? 0.001 : 1,
         }}
       />
     </View>

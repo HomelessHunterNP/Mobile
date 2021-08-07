@@ -1,6 +1,12 @@
+import * as Haptics from "expo-haptics";
 import React from "react";
-
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 
 import { Icon } from "react-native-elements";
 
@@ -8,9 +14,21 @@ const { width, height } = Dimensions.get("screen");
 const MapControlButton = (props) => {
   const { iconName, onPress } = props;
   return (
-    <View style={styles.mapControlButtonContainer}>
-      <Icon type="ionicon" name={iconName} color={"#000"} size={height * 0.03} />
-    </View>
+    <TouchableOpacity
+      onPress={() => {
+        onPress();
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      }}
+    >
+      <View style={styles.mapControlButtonContainer}>
+        <Icon
+          type="ionicon"
+          name={iconName}
+          color={"#000"}
+          size={height * 0.03}
+        />
+      </View>
+    </TouchableOpacity>
   );
 };
 export default MapControlButton;

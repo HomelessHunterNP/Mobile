@@ -29,7 +29,20 @@ const MapScreen = () => {
       <MapView currentLocation={currentLocation} />
       <SearchBar />
       <View style={styles.mapControlButtonContainer}>
-        <MapControlButton iconName="locate-outline" locationGranted={locationPermission} />
+        <MapControlButton
+          iconName="locate-outline"
+          locationGranted={locationPermission}
+          onPress={async () => {
+            try {
+              var location = await Location.getCurrentPositionAsync({});
+              setCurrentLocation(location);
+            } catch (e) {
+              alert(
+                "You need to allow HomelessHunter to access your location. You can do this in your device's settings! \n \n Settings > HomelessHunter > Location"
+              );
+            }
+          }}
+        />
         <MapControlButton iconName="grid-outline" />
       </View>
     </View>
