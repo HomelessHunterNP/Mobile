@@ -15,6 +15,7 @@ const AppStack = () => {
   return (
     <Tab.Navigator
       initialRouteName="Map"
+      screenOptions={{ headerShown: false }}
       tabBarOptions={{
         activeTintColor: "#00d5a4",
         showLabel: true,
