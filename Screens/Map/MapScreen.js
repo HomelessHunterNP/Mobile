@@ -1,8 +1,10 @@
 import React from 'react';
 
+import MapView from './Components/MapView'
+
 const MapScreen = () => {
     return (
-        null
+        <MapView/>
     )
 }
 export default MapScreen;
