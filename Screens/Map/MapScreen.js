@@ -1,10 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import MapView from './Components/MapView'
+import MapView from "./Components/MapView";
+import SearchBar from "./Components/SearchBar";
 
 const MapScreen = () => {
-    return (
-        <MapView/>
-    )
-}
+  return (
+    <>
+      <MapView />
+      <SearchBar />
+    </>
+  );
+};
 export default MapScreen;
