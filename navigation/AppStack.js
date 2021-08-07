@@ -18,6 +18,9 @@ const AppStack = () => {
       tabBarOptions={{
         activeTintColor: "#00d5a4",
         showLabel: true,
+        labelStyle:{
+            color:"#000",
+        },
       }}
     >
       <Tab.Screen
