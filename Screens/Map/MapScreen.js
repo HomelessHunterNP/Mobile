@@ -1,3 +1,4 @@
+import * as Location from "expo-location";
 import React from "react";
 import { View, StyleSheet, Text, Dimensions } from "react-native";
 
@@ -8,12 +9,27 @@ import MapControlButton from "./Components/MapControlButton";
 const { width, height } = Dimensions.get("screen");
 
 const MapScreen = () => {
+  const [currentLocation, setCurrentLocation] = React.useState(null);
+  const [locationPermission, setLocationPermission] = React.useState(null);
+  React.useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        setLocationPermission(false);
+        return;
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      setCurrentLocation(location);
+      setLocationPermission(true);
+    })();
+  }, []);
   return (
     <View style={{ flex: 1 }}>
-      <MapView />
+      <MapView currentLocation={currentLocation} />
       <SearchBar />
       <View style={styles.mapControlButtonContainer}>
-        <MapControlButton iconName="locate-outline" />
+        <MapControlButton iconName="locate-outline" locationGranted={locationPermission} />
         <MapControlButton iconName="grid-outline" />
       </View>
     </View>
